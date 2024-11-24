@@ -1,9 +1,9 @@
-import { DataSource } from "typeorm";
-import "dotenv/config";
+import { DataSource } from 'typeorm';
+import 'dotenv/config';
 
 export const databaseProviders = [
   {
-    provide: "DATABASE_CONNECTION",
+    provide: 'DATABASE_CONNECTION',
     useExisting: DataSource,
   },
 ];
