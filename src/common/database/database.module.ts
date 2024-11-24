@@ -19,7 +19,7 @@ import { Materials } from '../entities/materials.entity';
       entities: [User, Game, Type, Category, Materials],
       schema: 'public',
       logging: 'all',
-      synchronize: false,
+      synchronize: true,
     }),
   ],
   providers: [...databaseProviders],

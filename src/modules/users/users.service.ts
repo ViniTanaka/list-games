@@ -22,19 +22,28 @@ export class UsersService {
     return 'This action adds a new user';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.manager.find(User, {
+      select: ['id', 'name', 'surname', 'userName'],
+    });
   }
 
   async findOneUser(userName: string) {
     return await this.manager.findOne(User, { where: { userName } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async findOne(id: string) {
+    return await this.manager.findOne(User, {
+      select: ['id', 'name', 'surname', 'userName'],
+      where: { id },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return await this.manager.update(User, id, updateUserDto);
+  }
+
+  remove(id: string) {
+    return this.manager.softDelete(User, id);
   }
 }
